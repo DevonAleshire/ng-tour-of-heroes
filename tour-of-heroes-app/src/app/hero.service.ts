@@ -13,7 +13,13 @@ export class HeroService {
 
   getHeroes(): Observable<Hero[]> {
     const heroes = of(HEROES);
-    this.messageSvc.add('HeroesService: fetched heroes.');
+    this.messageSvc.add('HeroesService: Fetched Heroes.');
     return heroes;
+  }
+
+  getHero(id: number): Observable<Hero> {
+    const hero = HEROES.find(hero => hero.id === id)!;
+    this.messageSvc.add(`HeroesService: Fethed Hero id=${id}`);
+    return of(hero);    
   }
 }
